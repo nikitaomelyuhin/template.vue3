@@ -1,0 +1,238 @@
+// Add scss mixins
+
+@define-mixin bgi($image, $size: cover, $position: center) {
+  // Example:
+  // <style>
+  // .container {
+  //   @include bgi('spyrix_mac.png', contain);
+  // }
+  // </style>
+  background: url('~images/#{$image}');
+  background-repeat: no-repeat;
+  background-size: $size;
+  background-position: $position;
+}
+
+@define-mixin pseudo(
+  $width: 100%,
+  $height: 100%,
+  $display: inline-block,
+  $pos: absolute,
+  $content: ''
+) {
+  // /* ===== Usage ===== */
+  // div {
+  //   position: relative;
+  //   width: 200px;
+  //   height: 200px;
+
+  //   &:after {
+  //     @include pseudo(100px, 100px);
+  //   }
+  // }
+  content: $content;
+  display: $display;
+  position: $pos;
+  @include box($width, $height);
+}
+
+@define-mixin svg-icon($color: false, $width: false, $height: $width) {
+  // .exampleClass {
+  //   @include svg-icon($color-red);
+  // }
+  display: inline-flex;
+  flex-shrink: 0;
+  @if ($width) {
+    width: $width;
+  }
+  @if ($height) {
+    height: $height;
+  }
+
+  @if $color {
+    fill: $color;
+  }
+}
+
+@define-mixin panel() {
+  border-radius: 6px;
+  box-shadow: $shadow;
+  background-color: #fff;
+}
+
+@define-mixin planks() {
+  min-width: calc(100% - #{$planks-gap} * 2);
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -$planks-gap;
+}
+@define-mixin planksAr() {
+  min-width: calc(100% - #{$planks-gap} * 2);
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -$planks-gap;
+  margin-right: 0;
+}
+
+@define-mixin plank($columns, $width) {
+  flex-shrink: 0;
+  border-radius: 10px;
+  margin-right: $planks-gap;
+  margin-bottom: $planks-gap;
+  box-shadow: $shadow;
+  background-color: #fff;
+  // height: fit-content;
+
+  @if $columns == 1 {
+    width: calc(100%);
+  } @else if $columns == 3 {
+    @if $width == 2 {
+      width: calc((100% - #{$planks-gap} * 1.5) / 3 * 2);
+    } @else {
+      width: calc((100% - 3 * #{$planks-gap}) / 3);
+    }
+  } @else if $columns == 2 {
+    width: calc((100% - 2 * #{$planks-gap}) / 2);
+  } @else if $columns == 4 {
+    width: calc((100% - 4 * #{$planks-gap}) / 4);
+  } @else if $columns == 6 {
+    width: calc((100% - 6 * #{$planks-gap}) / 6);
+  }
+}
+@define-mixin plankAr($columns, $width) {
+  flex-shrink: 0;
+  border-radius: 10px;
+  margin-left: $planks-gap;
+  margin-bottom: $planks-gap;
+  box-shadow: $shadow;
+  background-color: #fff;
+  margin-right: 0;
+  // height: fit-content;
+
+  @if $columns == 1 {
+    width: calc(100%);
+  } @else if $columns == 3 {
+    @if $width == 2 {
+      width: calc((100% - #{$planks-gap} * 1.5) / 3 * 2);
+    } @else {
+      width: calc((100% - 3 * #{$planks-gap}) / 3);
+    }
+  } @else if $columns == 2 {
+    width: calc((100% - 2 * #{$planks-gap}) / 2);
+  } @else if $columns == 4 {
+    width: calc((100% - 4 * #{$planks-gap}) / 4);
+  } @else if $columns == 6 {
+    width: calc((100% - 6 * #{$planks-gap}) / 6);
+  }
+}
+
+@define-mixin plank-row($columns) {
+  display: grid;
+  grid-template-rows: auto;
+  grid-column-gap: 5px;
+  padding: 15px 20px;
+  justify-content: space-between;
+  border-top: 1px solid $card-border;
+
+  &:nth-child(2n + 1) {
+    background-color: #f8f9fa;
+  }
+
+  @if $columns == 2 {
+    grid-template-columns: 70% 30%;
+
+    @include tablets {
+      grid-template-columns: 60% 40%;
+    }
+  } @else if $columns == 3 {
+  }
+}
+
+@define-mixin load-bg() {
+    animation: 1.5s wave linear infinite;
+    background-color: $skeleton-loader;
+    background: linear-gradient(to right, $skeleton-bg 8%, $skeleton-wave 18%, $skeleton-bg 33%);
+    background-size: 800px 104px;
+}
+
+@keyframes wave {
+  0% {
+      background-position: -468px 0
+  }
+  100% {
+      background-position: 468px 0
+  }
+}
+
+@keyframes animateBg {
+  from {
+    background-color: $skeleton-loader10;
+  }
+  10% {
+    background-color: $skeleton-loader20;
+  }
+  20% {
+    background-color: $skeleton-loader30;
+  }
+  30% {
+    background-color: $skeleton-loader40;
+  }
+  40% {
+    background-color: $skeleton-loader50;
+  }
+  50% {
+    background-color: $skeleton-loader60;
+  }
+  60% {
+    background-color: $skeleton-loader70;
+  }
+  70% {
+    background-color: $skeleton-loader80;
+  }
+  80% {
+    background-color: $skeleton-loader90;
+  }
+  to {
+    background-color: $skeleton-loader;
+  }
+}
+@keyframes animateButton {
+  from {
+    background-color: $primary10;
+  }
+  20% {
+    background-color: $primary20;
+  }
+  40% {
+    background-color: $primary30;
+  }
+  60% {
+    background-color: $primary40;
+  }
+  80% {
+    background-color: $primary50;
+  }
+  to {
+    background-color: $primary60;
+  }
+}
+@keyframes animateButtonGreen {
+  from {
+    background-color: $success10;
+  }
+  20% {
+    background-color: $success20;
+  }
+  40% {
+    background-color: $success30;
+  }
+  60% {
+    background-color: $success40;
+  }
+  80% {
+    background-color: $success50;
+  }
+  to {
+    background-color: $success60;
+  }
+}

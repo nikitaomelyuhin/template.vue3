@@ -1,0 +1,60 @@
+$bp-desktop-hd: "1800px";
+$bp-desktop: "1440px";
+$bp-laptop: "1080px";
+$bp-tablets: "768px";
+$bp-phones: "480px";
+$bp-phones-mini: "320px";
+
+
+@define-mixin custom($size) {
+  @media screen and (max-width: $size) {
+    @content;
+  }
+}
+@define-mixin tv() {
+  @media screen and (min-width: $bp-desktop-hd) {
+    @content;
+  }
+}
+
+@define-mixin desktopHd() {
+  @media screen and (max-width: $bp-desktop-hd) {
+    @content;
+  }
+}
+
+@define-mixin desktop() {
+  @media screen and (max-width: $bp-desktop) {
+    @content;
+  }
+}
+
+@define-mixin laptop() {
+  @media screen and (max-width: $bp-laptop) {
+    @content;
+  }
+}
+
+@define-mixin tablets() {
+  @media screen and (max-width: $bp-tablets) {
+    @content;
+  }
+}
+
+@define-mixin phones() {
+  @media screen and (max-width: $bp-phones) {
+    @content;
+  }
+}
+
+@define-mixin phonesMini() {
+  @media screen and (max-width: $bp-phones-mini) {
+    @content;
+  }
+}
+
+@define-mixin printer() {
+  @media print { 
+    @content;
+  }
+}

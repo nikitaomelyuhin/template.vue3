@@ -1,0 +1,36 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.web.json",
+  "compilerOptions": {
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "lib": ["es2020"],
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "noEmit": true,
+    "strict": true,
+    "target": "esnext",
+    "module": "esnext",
+    "types": [
+      "node",
+      "vue",
+      "vite/client",
+      "@vue/runtime-core",
+      "vite-svg-loader"
+    ],
+    "typeRoots": [
+      "./node_modules/@types",
+      "./src/types",
+      "./src/**/types"
+    ]
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "include": ["env.d.ts", "src/**/*.ts", "src/**/*.vue"]
+}
