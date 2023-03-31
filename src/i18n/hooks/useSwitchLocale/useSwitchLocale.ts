@@ -1,5 +1,5 @@
 import type { LocaleType } from '../../types';
-import i18n, { defaultLocale } from '@/i18n/i18n';
+import i18n, { defaultLocale } from '../../i18n';
 import { useRoute, useRouter } from 'vue-router';
 
 export default function useSwitchLocale() {

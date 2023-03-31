@@ -7,6 +7,10 @@ interface IProps {
 const props = defineProps<IProps>();
 const { localePath } = useLocalePath();
 
+if (!props.to.startsWith('/')) {
+  throw new Error('link should starts with \'/\'');
+}
+
 const url = computed(() => {
   return localePath(props.to);
 });

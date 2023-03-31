@@ -32,5 +32,5 @@
   "exclude": [
     "node_modules"
   ],
-  "include": ["env.d.ts", "src/**/*.ts", "src/**/*.vue"]
+  "include": ["env.d.ts", "src/**/*.ts", "src/**/*.vue", "vitest.config.ts"]
 }
